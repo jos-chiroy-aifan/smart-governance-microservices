@@ -1,0 +1,144 @@
+{
+  "info": {
+    "_postman_id": "7b991d30-4772-4506-b14a-96375732e7da",
+    "name": "test_governance",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "6080620"
+  },
+  "item": [
+    {
+      "name": "http://localhost/api/register",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"name\": \"Jose Chiroy 2\",\r\n    \"email\": \"jose2@test.com\",\r\n    \"password\": \"password1234\",\r\n    \"password_confirmation\": \"password1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/api/register",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "register"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost/api/login",
+      "request": {
+        "auth": {
+          "type": "noauth"
+        },
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n    \"email\": \"jose2@test.com\",\r\n    \"password\": \"password1234\"\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost/api/login",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "login"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost/api/logout",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "4|T2g3Vn7vZJOUhFiemS9hktbh4bFvKmiZ03glajcDb08696f7",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [],
+        "url": {
+          "raw": "http://localhost/api/logout",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "logout"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "http://localhost/api/documents",
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "3|G3BZaxzU1QDGUCYsuy5JJTAcpM48WuZRHYdGYDXnebc05e77",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Accept",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            {
+              "key": "documento",
+              "type": "file",
+              "uuid": "e6145de6-29e3-4ced-8895-a2cb38d1084d",
+              "src": "/C:/Users/jchir/Desktop/Prueba.pdf"
+            }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost/api/documents",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "path": [
+            "api",
+            "documents"
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}
