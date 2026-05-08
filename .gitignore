@@ -1,0 +1,18 @@
+# Laravel
+/testphp-governance/vendor/
+/testphp-governance/.env
+/testphp-governance/storage/*.key
+/testphp-governance/storage/framework/cache/*
+/testphp-governance/storage/framework/sessions/*
+/testphp-governance/storage/framework/views/*
+
+# Python
+/testpython-governance/__pycache__/
+/testpython-governance/venv/
+/testpython-governance/.env
+*.pyc
+
+# Docker & OS
+.DS_Store
+.idea/
+.vscode/

@@ -1,0 +1,46 @@
+services:
+  # Database PostgreSQL
+  pgsql:
+      image: postgres:15
+      container_name: gov_postgres
+      ports:
+        - "5432:5432"
+      environment:
+        POSTGRES_DB: test_governance
+        POSTGRES_USER: sail
+        POSTGRES_PASSWORD: password
+      healthcheck:
+        test: ["CMD-SHELL", "pg_isready -U sail -d test_governance"]
+        interval: 5s
+        retries: 5
+      networks:
+        - gov_network
+  # Backend Laravel
+  laravel_app:
+    build: ./testphp-governance
+    container_name: gov_laravel
+    ports:
+      - "80:80"
+    volumes:
+      - ./testphp-governance:/var/www/html
+    depends_on:
+      pgsql:
+        condition: service_healthy
+    entrypoint: ["sh", "/var/www/html/entrypoint.sh"]
+    networks:
+      - gov_network
+
+  # Microservice Python
+  python_service:
+    build: ./testpython-governance
+    container_name: gov_python
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./testphp-governance/storage/app/public:/app/storage
+    networks:
+      - gov_network
+
+networks:
+  gov_network:
+    driver: bridge
